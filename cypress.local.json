@@ -1,0 +1,8 @@
+{
+  "chromeWebSecurity": true,
+  "viewportWidth": 1400,
+  "viewportHeight": 1000,
+  "video": false,
+  "defaultCommandTimeout": 20000,
+  "watchForFileChanges": false
+}

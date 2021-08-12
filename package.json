@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "cypress": "^8.2.0",
+    "tcp-ping": "^0.1.1"
+  },
+  "scripts": {
+    "cypress:run-tests:local": "cypress run -C cypress.local.json"
+  }
+}
