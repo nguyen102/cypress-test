@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ci_node_index: [0,1]
+        test_env: [AppStream_Enabled,AppStream_Disabled]
 
     steps:
       - name: Checkout
@@ -28,6 +28,6 @@ jobs:
         run: yarn install
       - name: Run cypress test
         env:
-          CI_NODE_INDEX: ${{ matrix.ci_node_index }}
+          TEST_ENV: ${{ matrix.test_env }}
         continue-on-error: true
         run: ./run-tests-in-parallel.sh
