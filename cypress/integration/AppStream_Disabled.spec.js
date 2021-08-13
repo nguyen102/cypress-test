@@ -1,4 +1,4 @@
-describe('Short running connection test', () => {
+describe('AppStream disabled tests', () => {
 
     it('Google DNS server', () => {
         const ipAddress = '8.8.8.8';

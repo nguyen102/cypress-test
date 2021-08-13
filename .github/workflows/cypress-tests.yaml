@@ -5,8 +5,25 @@ on:
       - master
 
 jobs:
+  deploy-envs:
+    name: Deploy environments
+    runs-on: ubuntu-18.04
+    strategy:
+      fail-fast: false
+      matrix:
+        test_env: [AppStream_Enabled,AppStream_Disabled]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Deploy
+        env:
+          TEST_ENV: ${{ matrix.test_env }}
+        continue-on-error: true
+        run: ./deploy-in-parallel.sh
+
   cypress-test:
     name: Cypress tests
+    needs: deploy-envs
     runs-on: ubuntu-18.04
     strategy:
       fail-fast: false
