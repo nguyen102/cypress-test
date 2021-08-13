@@ -46,5 +46,4 @@ jobs:
       - name: Run cypress test
         env:
           TEST_ENV: ${{ matrix.test_env }}
-        continue-on-error: true
         run: ./run-tests-in-parallel.sh
