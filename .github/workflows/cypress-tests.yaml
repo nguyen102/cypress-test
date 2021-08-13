@@ -8,6 +8,11 @@ jobs:
   cypress-test:
     name: Cypress tests
     runs-on: ubuntu-18.04
+    strategy:
+      fail-fast: false
+      matrix:
+        ci_node_index: [0,1]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -15,11 +20,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
-      - name: Install pnpm and system libraries
+      - name: Install yarn and system libraries
         run: |
           npm install -g yarn
           sudo apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
       - name: Install dependencies
         run: yarn install
       - name: Run cypress test
-        run: yarn run cypress:run-tests
+        env:
+          CI_NODE_INDEX: ${{ matrix.ci_node_index }}
+        continue-on-error: true
+        run: ./run-tests-in-parallel.sh
