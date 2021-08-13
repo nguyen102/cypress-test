@@ -8,7 +8,6 @@ jobs:
   cypress-test:
     name: Cypress tests
     runs-on: ubuntu-18.04
-    needs: integration-test
     steps:
       - name: Checkout
         uses: actions/checkout@v2
