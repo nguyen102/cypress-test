@@ -25,7 +25,7 @@ describe('Example connection test', () => {
     })
 
     it('expect this test to fail', () => {
-        const ipAddress = '1.1.1.1';
+        const ipAddress = '0.0.0.0';
         const port = '80';
         cy.exec(`node checkConnection.js ${ipAddress} ${port}`).its('stdout').should('equal', "true")
     })
